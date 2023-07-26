@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chapter One</title>
+  </head>
+  <body>
+    <h1>Introduction to Algorithms</h1>
+    <h3>What's an algorithm?</h3>
+    <p>
+      A set of intructions for completing a task. Examples: Binary search or
+      simple search.
+    </p>
+    <h4>Binary Search</h4>
+    <p>
+      I'm thinking of a number between 1 and 1000. We could start with 1, then
+      2, then 3, etc until we guess correctly but that could take 1000 guesses.
+      Instead we can do binary search where we guess the middle number and if
+      see if our guess is too high or too low.
+    </p>
+    <p>
+      Then we eliminate everything that's too high or too low and guess the
+      middle again. We repeat this process until we're right. How many guesses
+      at MOST would we need to get the answer?
+    </p>
+    <p>
+      It would take 10 guesses at most. 1000 -> 500 -> 250 -> 125 -> 63 -> 32 ->
+      16 -> 8 -> 4 -> 2 -> ANSWER! If it's 1 through 2000, it only takes another
+      guess at 11 total.
+    </p>
+    <h4>Running time</h4>
+    <p>
+      AKA time complexity. How long hte alogrithm takes to complete its
+      execution. It is expressed with Big O notation.
+    </p>
+    <h4>Big O notation</h4>
+    <p>
+      This tells us how fast the algorithm is. Examples: In simple search, the
+      Big O looks like this: O(n). In binary search, Big O looks like this:
+      O(log n). Big O notation tells us how many guesses we must make.
+    </p>
+    <h4>Common Big O run times</h4>
+    <p>O(log n) Ex: Binary search</p>
+    <p>O(n) Ex: Simple search</p>
+    <p>O(n * log n) Ex: Quicksort</p>
+    <p>O(n^2) Ex: Selection sort (slow sorting algorithm)</p>
+    <p>O(n!) Ex: REALLY SLOW. Like the traveling salesman</p>
+  </body>
+</html>
