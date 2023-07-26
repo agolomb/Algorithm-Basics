@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selection Sort</title>
+  </head>
+  <body>
+    <h1>Selection Sort</h1>
+    <p>
+      Two of the most basic data structures are arrays and linked lists. Linked
+      lists are generally better to use but both have pros and cons.
+    </p>
+    <h3>Arrays</h3>
+    <p>
+      This is list where all the items are stored right next to each other.
+      Here's an example in JavaScript:
+    </p>
+    <p>var numbers = [1, 2, 3, 4, 5,]</p>
+    <p>
+      What's a pro for an array? It's greating for reading items because you
+      know the address of the next item. How? In the JavaScript example above,
+      what's the index of "4"? Its index is 3, because it's an array, we know
+      that item 4 is the 3rd item. This means arrays are better for reading
+      data.
+    </p>
+    <h3>Linked Lists</h3>
+    <p>
+      Items are not necessarily stored right next to each like arrays. Instead
+      there memory addresses are stored next to each other but there actual
+      locations can be random. As an analogy, we can think of a chain of command
+      at a company. The taxi driver reports to the taxi manager. The manager
+      reports to the director. The director reports to the supervisor. The
+      supervisor reports to CEO. These employees are not all right next to each
+      other but if we look at each employee, we can see who they report to and
+      who reports to them. They do not need to be standing in a specific order
+      (like an array!)
+    </p>
+    <p>
+      What's a pro for linked lists? We don't need our items to be right next to
+      each other. This makes them much better for inserting more data.
+    </p>
+    <p>
+      What's a con of a linked list? If we have all of our taxi company
+      employees in a random list but we want to know who is 3rd in command, we
+      can't just go to the 3rd index. We must start at the lowest in command and
+      go up the up chain but looking at each item. This means linked lists are
+      worse for reading data whereas arrays are better for reading data.
+    </p>
+    <h4>Why are linked lists better for insert?</h4>
+    <p>
+      Since each item points to the next item in order even though their
+      locations are random, we can insert a new item in the middle and the other
+      items will still point to where we wanted them to.
+    </p>
+    <h3>Takeways:</h3>
+    <h4>When storing multiple items, we use an array or a list.</h4>
+    <h4>In an array, our items are stored right next to each other.</h4>
+    <h4>
+      In lists, items are stored all over and each item has the address of the
+      next item.
+    </h4>
+    <h4>Arrays are better at READs</h4>
+    <h4>Lists are better at INSERT and DELETE.</h4>
+  </body>
+</html>
