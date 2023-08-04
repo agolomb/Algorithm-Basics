@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recursion</title>
+  </head>
+  <body>
+    <h1>Recursion</h1>
+    <p>
+      We have locked box. The key is in another box but that box is filled with
+      more boxes and so on. The key is in one of those boxes within the second
+      box. What algorithm can we write to find the key?
+    </p>
+    <p>
+      We have a function that opens up a box to check for a key. If the key is
+      present (true), our function stops there and returns the key. Otherwise we
+      need to invoke our function again to open another box and check for a key.
+      If we find key (true) we stop, otherwise we keep invoking our function to
+      open another box.
+    </p>
+    <script>
+      //This is Psuedo code and may not be written properly
+      function unlockBox(box, key) {
+        if (box === key) return "We found the key";
+        else if (box != key) {
+          unlockBox(box);
+        }
+      }
+    </script>
+    <h2>Base Case/ Guard Clause</h2>
+    <p>
+      Recursive functions can easily become infinite loops. When writing a
+      recursive function, always write the condition we're looking for. Why?
+    </p>
+    <p>
+      We want to ensure our function stops when we find our true condition. Like
+      when we find our missing key to the box!
+    </p>
+    <p>
+      This first condition is called the base case. Some might call it the guard
+      clause.
+    </p>
+    <h2>Recursive Base</h2>
+    <p>
+      This part is after the guard clause. It's what we want to happen if our
+      base case is false. We didn't find the key so we need to open another box.
+    </p>
+    <h2>The Call Stack</h2>
+    <p>
+      We're planning a barbeque with a to do list. We'll be pushing(adding) and
+      popping(remove topmost item) items. As write things down on sticky notes
+      and push them to the pile, we've created a stack! In our machine, this
+      known as the "Call Stack".
+    </p>
+    <script>
+      //Here's a simple function that creates a call stack
+      function greet(name) {
+        console.log("Hi " + name);
+        greet2(name);
+        bye(name);
+      }
+      function greet2(name) {
+        console.log("How are you " + name + "?");
+      }
+      function bye(name) {
+        console.log("Goodbye " + name + "!");
+      }
+      greet("Alex");
+    </script>
+    <p>
+      Our simple greeting program creates call stack. In the browser console,
+      our call stack reads in wrong direction. The last function we call "bye()"
+      is actually on top and the first function "greet()" is at the bottom. Our
+      call stack is saving the variable info (the name of who we're greeting to
+      pass it to the next functions.)
+    </p>
+    <!-- Exercise 3.1: Our variable's value is "Maggie." The first function called was "greet()" and the second function was "greet2()." -->
+    <h3>The Call Stack and Recursion</h3>
+    <p>
+      Recursive functions will have a call stack. The factorial equation is
+      Recursion in action! We pass our number "n", if "n" is bigger than 1 we
+      need store it memory, subtract 1 and multiple "n" & "n - 1". But we need
+      to keep going. We then have pass "n - 1" until we hit the base case of
+      when "n" is 0 and we can stop our factorial equation.
+    </p>
+    <script>
+      //Let's write a recursive factorial function in javaScript
+      function factorial(number) {
+        if (number === 0) {
+          return 1;
+        } else {
+          console.log("current number: ", number);
+          return number * factorial(number - 1);
+        }
+      }
+      /*What's happening when we do 3!
+      factorial(3)
+      1st: else: 3 * factorial(3 - 1)
+      factorial(2)
+      2nd: else: 3 * 2 * factorial(2 - 1)
+      factorial(1)
+      3rd: else: 3 * 2 * 1 * factorial(1 - 1)
+      factorial(0)
+      3 * 2 * 1 * 1
+      */
+    </script>
+    <h3>The Box and Key problem revisited.</h3>
+    <p>We open Box A which has Box B and Box C.</p>
+    <p>Then we open Box B, then Box D, then empty.</p>
+    <p>We never went back to Box C!</p>
+  </body>
+  <script>
+    /*This example solves the issue of checking new piles of boxes when initial piles yield no key! */
+
+    // Function to check if a key exists in the boxes
+    function hasKey(boxes, key, visited = new Set()) {
+      /* We pass an array of boxes, key (the string we're looking for, in this case it's "key"), and the optional visited.
+      visited = new Set()) → 
+      */
+      // Base case: if the current box contains the key, return true
+      if (boxes.includes(key)) {
+        return true;
+      }
+
+      // Mark the current box as visited
+      visited.add(boxes);
+      console.log(visited.add(boxes));
+      // Recursive case: search inside the boxes
+      for (const box of boxes) {
+        // Check if the current box is not a key (i.e., it contains other boxes)
+        if (!visited.has(box) && Array.isArray(box)) {
+          // Recursively search inside the inner box
+          if (hasKey(box, key, visited)) {
+            return true;
+          }
+        } else if (box === key) {
+          // Check if the current box is the key we are looking for
+          return true;
+        }
+      }
+
+      // If the key is not found in any of the boxes, return false
+      return false;
+    }
+
+    // Example usage:
+    const boxes = [
+      ["boxA", "boxB"],
+      ["boxC"],
+      ["boxD", "boxE", "boxF", ["boxG", "key"]],
+    ];
+
+    const keyToFind = "key";
+    console.log(hasKey(boxes, keyToFind)); // Output: true
+  </script>
+</html>
